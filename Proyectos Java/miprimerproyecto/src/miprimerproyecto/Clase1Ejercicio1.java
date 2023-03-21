@@ -1,6 +1,6 @@
 package miprimerproyecto;
 
-public class Guia1Ejercicio1 {
+public class Clase1Ejercicio1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
