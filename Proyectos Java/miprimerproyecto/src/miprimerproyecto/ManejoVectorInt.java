@@ -1,18 +1,16 @@
 package miprimerproyecto;
 
-public class Clase3Ejercicio1C {
+public class ManejoVectorInt {
 
-	public static void main(String[] args) {
-		int[] numeros = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
-		int numeroDeControl = 25;
+	public static int sumarMayoresQue(int[] vector, int numeroDeControl) {
 		int resultado = 0;
 		System.out.println("Numeros en el vector:");
-		for(int numero : numeros) {
+		for(int numero : vector) {
 			System.out.print(numero + " ");
 		}
 		System.out.println();
 		System.out.println("Se suman:");
-		for(int numero : numeros) {
+		for(int numero : vector) {
 			if(numero > numeroDeControl) {
 				System.out.print(numero + " ");
 				resultado += numero;
@@ -20,8 +18,7 @@ public class Clase3Ejercicio1C {
 		}
 		System.out.println();
 		System.out.println("--------------");
-		System.out.println("Resultado: " + resultado);
-		
+		return resultado;
 	}
 
 }
