@@ -27,5 +27,14 @@ public class Clase3Ejercicio1 {
 		int numeroDeControl = 95;
 		int resultado = ManejoVectorInt.sumarMayoresQue(unVector, numeroDeControl);
 		System.out.println("Resultado: " + resultado);
+	
+		System.out.println("Desplazamiento caracteres en una cadena");
+		System.out.println("---------------------------------------");
+		
+		String nuevaCadena = "hola que tal";
+		int desplazamiento = 2;
+		String desplazado = ManejoCodificacionString.dezplazarCaracter(nuevaCadena, desplazamiento);
+		System.out.println(nuevaCadena);
+		System.out.println(desplazado);
 	}
 }
