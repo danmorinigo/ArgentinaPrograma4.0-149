@@ -1,4 +1,4 @@
-package miprimerproyecto;
+package miprimerproyectomio;
 
 public class AparicionDeCaracter {
 	public static int cuentaLetras(String frase, char letraBuscada) {

@@ -1,4 +1,4 @@
-package miprimerproyecto;
+package miprimerproyectomio;
 
 public class Clase3Ejercicio1 {
 
@@ -31,8 +31,8 @@ public class Clase3Ejercicio1 {
 		System.out.println("Desplazamiento caracteres en una cadena");
 		System.out.println("---------------------------------------");
 		
-		String nuevaCadena = "hola que tal";
-		int desplazamiento = 2;
+		String nuevaCadena = "hola que\ntal!";
+		int desplazamiento = 1;
 		String desplazado = ManejoCodificacionString.dezplazarCaracter(nuevaCadena, desplazamiento);
 		System.out.println(nuevaCadena);
 		System.out.println(desplazado);

@@ -1,6 +1,6 @@
 package tema4;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Ejercicio1B {
 

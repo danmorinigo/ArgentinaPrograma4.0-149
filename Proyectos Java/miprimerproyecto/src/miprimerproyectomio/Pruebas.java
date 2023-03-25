@@ -1,4 +1,4 @@
-package miprimerproyecto;
+package miprimerproyectomio;
 
 public class Pruebas {
 
