@@ -14,11 +14,13 @@ public class UsoCarrito {
 		Path pathProductos = Paths.get(archivoProductos);
 		System.out.println(pathProductos.toAbsolutePath());
 		System.out.println(Files.exists(pathProductos));
-		//Producto[] producto = new Producto[6];
+		Producto[] producto = new Producto[6];
 		
 		try {
+			String[] linea = new String[3];
 			for(String fila : Files.readAllLines(pathProductos)) {
-				for(String palabra : fila.split(",")) {
+				linea = fila.split(",");
+				for(String palabra : linea) {
 					System.out.println(palabra);
 				}
 				
