@@ -11,11 +11,12 @@ public class Carrito {
 	}
 
 	public void listarArticulos() {
-		System.out.println("Cantidad\tPrecio Unitario\tProducto");
+		System.out.println("Cantidad\tPrecio Unitario\t\tProducto");
+		System.out.println("--------\t---------------\t\t--------");
 		for(int j = 0; j < items.length; j++) {
-			System.out.println(items[j].getCantidad() + "\t" +
-			items[j].getProducto().getPrecio().toString() + "\t" + 
-			items[j].getProducto());
+			System.out.println("   " + items[j].getCantidad() + "\t\t" +
+			items[j].getProducto().getPrecio().toString() + "\t\t\t" + 
+			items[j].getProducto().getNombre());
 		}
 	}
 	
@@ -24,6 +25,7 @@ public class Carrito {
 		for(ItemCarrito enCarrito : items) {
 			valorCarrito += enCarrito.getCantidad() * enCarrito.getProducto().getPrecio(); 
 		}
-		return valorCarrito;
+		
+		return Math.round(valorCarrito * 100) / 100d;
 	}
 }
