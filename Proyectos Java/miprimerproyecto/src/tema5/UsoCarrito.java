@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import tema5.entidades.Producto;
 import tema5.entidades.ItemCarrito;
 import tema5.entidades.Carrito;
+import tema5.entidades.DescuentoFijo;
+import tema5.entidades.DescuentoPorPorcentaje;
 
 public class UsoCarrito {
 
@@ -52,10 +54,27 @@ public class UsoCarrito {
 		Carrito carrito1 = new Carrito(itemsCarrito1);
 		Carrito carrito2 = new Carrito(itemsCarrito2);
 		
+		DescuentoFijo descuentoFijo = new DescuentoFijo();
+		DescuentoPorPorcentaje descuentoPorcentaje = new DescuentoPorPorcentaje();
+		
+		descuentoFijo.setValor(11.30);
+		descuentoPorcentaje.setValor(50.0);
+		
 		carrito1.listarArticulos();
-		System.out.println("  TOTAL --->" + carrito1.precio() + "<---");
+		Double total1 = carrito1.precio();
+		System.out.println("  TOTAL --->" + total1 + "<---");
+		System.out.println("Con descuento de $" + descuentoFijo.getValor() +
+		" --->" + descuentoFijo.aplicarDescuento(total1) + "<---");
+		System.out.println("Con descuento de %" + descuentoPorcentaje.getValor() +
+		" --->" + descuentoPorcentaje.aplicarDescuento(total1) + "<---");
+		
+		Double total2 = carrito2.precio();
 		carrito2.listarArticulos();
 		System.out.println("  TOTAL --->" + carrito2.precio() + "<---");
+		System.out.println("Con descuento de $" + descuentoFijo.getValor() +
+		" --->" + descuentoFijo.aplicarDescuento(total2) + "<---");
+		System.out.println("Con descuento de %" + descuentoPorcentaje.getValor() +
+		" --->" + descuentoPorcentaje.aplicarDescuento(total2) + "<---");
 	}
 
 }
