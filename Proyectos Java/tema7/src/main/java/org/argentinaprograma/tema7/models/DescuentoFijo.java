@@ -8,4 +8,10 @@ public class DescuentoFijo extends Descuento {
 		return (monto - valor);
 	}
 
+	@Override
+	public Double valorDescuento() {
+
+		return valor;
+	}
+
 }

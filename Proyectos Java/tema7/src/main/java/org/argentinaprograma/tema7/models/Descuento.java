@@ -14,4 +14,6 @@ public abstract class Descuento {
 	
 	public abstract Double aplicarDescuento(Double monto);
 	
+	public abstract Double valorDescuento();
+	
 }

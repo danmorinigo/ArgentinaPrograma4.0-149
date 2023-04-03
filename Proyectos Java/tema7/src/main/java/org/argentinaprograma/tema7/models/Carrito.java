@@ -32,6 +32,10 @@ public class Carrito {
 		
 		items = new ArrayList<ItemCarrito>();
 	}
+	public Carrito(double porcentaje, double maximoDescuento) {
+		descuento = new DescuentoPorcentajeConTope(porcentaje, maximoDescuento);
+		items = new ArrayList<ItemCarrito>();
+	}
 	
 	public List<ItemCarrito> getItems(){
 		return this.items;
@@ -68,5 +72,9 @@ public class Carrito {
 	public double precioConDescuento() {
 		//redondeo a 2 decimales
 		return Math.round(descuento.aplicarDescuento(this.precioSinDescuento()) * 100) / 100d;
+	}
+	
+	public double ahorro() {
+		return Math.round((descuento.valorDescuento() * 100) / 100d);
 	}
 }
