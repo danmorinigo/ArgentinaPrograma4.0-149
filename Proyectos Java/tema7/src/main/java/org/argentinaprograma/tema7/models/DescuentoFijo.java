@@ -5,7 +5,7 @@ public class DescuentoFijo extends Descuento {
 	@Override
 	public Double aplicarDescuento(Double monto) {
 
-		return (monto - valor);
+		return (conDosDecimales(monto) - valor);
 	}
 
 	@Override

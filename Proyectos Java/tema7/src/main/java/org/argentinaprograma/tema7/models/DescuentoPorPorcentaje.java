@@ -2,18 +2,18 @@ package org.argentinaprograma.tema7.models;
 
 public class DescuentoPorPorcentaje extends Descuento{
 
-	private Double monto;
+	private Double valorDelDescuento;
 	
 	@Override
 	public Double aplicarDescuento(Double monto) {
 
-		this.monto = monto;
-		return (monto - (monto * (valor / 100.0)));
+		valorDelDescuento = conDosDecimales(monto * (valor / 100.0));
+		return (monto - valorDelDescuento);
 	}
 
 	@Override
 	public Double valorDescuento() {
-		return (monto * (valor / 100.0));
+		return valorDelDescuento;
 	}
 
 }

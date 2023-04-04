@@ -27,7 +27,6 @@ public class Carrito {
 			descuento = new DescuentoFijo();
 			descuento.setValor(0.0);
 			//no se entiende el tipo de descuento, no se aplica ninguno
-			//o repreguntar...
 		}
 		
 		items = new ArrayList<ItemCarrito>();
@@ -59,22 +58,23 @@ public class Carrito {
 		}
 	}
 
-	public double precioSinDescuento() {
-		double valorCarrito = 0.0;
+	public Double precioSinDescuento() {
+		Double valorCarrito = 0.0;
 		for(ItemCarrito enCarrito : this.getItems()) {
 			valorCarrito += enCarrito.precio(); 
 		}
-		
-		//redondeo a 2 decimales
-		return Math.round(valorCarrito * 100) / 100d;
+		return aDosDecimales(valorCarrito);
 	}
 	
+	private Double aDosDecimales(Double unValorARedondear) {
+		return (double)(Math.round(unValorARedondear * 100) / 100d);
+	}
+
 	public double precioConDescuento() {
-		//redondeo a 2 decimales
-		return Math.round(descuento.aplicarDescuento(this.precioSinDescuento()) * 100) / 100d;
+		return descuento.aplicarDescuento(this.precioSinDescuento());
 	}
 	
 	public double ahorro() {
-		return Math.round((descuento.valorDescuento() * 100) / 100d);
+		return descuento.valorDescuento();
 	}
 }

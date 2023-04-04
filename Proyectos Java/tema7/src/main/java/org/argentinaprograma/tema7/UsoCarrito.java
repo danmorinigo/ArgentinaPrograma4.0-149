@@ -43,7 +43,7 @@ public class UsoCarrito {
 		
 		//Armo 2 carritos
 		
-		Carrito carrito1 = new Carrito("f", 123.6);
+		Carrito carrito1 = new Carrito("f", 123.666);
 		Carrito carrito2 = new Carrito(5.0, 390.0);
 		for(int i = 0; i < 3; i++) {
 			carrito1.agregar(itemCarrito[i]);
@@ -53,18 +53,21 @@ public class UsoCarrito {
 		}
 		 
 		carrito1.listarArticulos();
-		Double total1 = carrito1.precioSinDescuento();
-		Double totalDesc1 = carrito1.precioConDescuento();
+		System.out.println(carrito1.precioSinDescuento());
+		Double total1 = (double)((Math.round(carrito1.precioSinDescuento()*100))/100d);
+		Double totalDesc1 = (double)((Math.round(carrito1.precioConDescuento()*100)) / 100d);
+		Double ahorrado = (double)((Math.round(carrito1.ahorro()*100)) / 100d);
 		System.out.println("  TOTAL sin Descuento --->" + total1 + "<---");
 		System.out.println("  TOTAL con Descuento --->" + totalDesc1 + "<---" +
-				"[Ahorro -> $" + carrito1.ahorro() + "]");
+				"[Ahorro -> $" + ahorrado + "]");
 		
-		Double total2 = carrito2.precioSinDescuento();
-		Double totalDesc2 = carrito2.precioConDescuento();
 		carrito2.listarArticulos();
+		Double total2 = (double)((Math.round(carrito2.precioSinDescuento()*100))/100d);
+		Double totalDesc2 = (double)((Math.round(carrito2.precioConDescuento()*100)) / 100d);
+		Double ahorrado2 = (double)((Math.round(carrito2.ahorro()*100)) / 100d);
 		System.out.println("  TOTAL sin Descuento --->" + total2 + "<---");
 		System.out.println("  TOTAL con Descuento --->" + totalDesc2 + "<---" +
-				"[Ahorro -> $" + carrito2.ahorro() + "]");
+				"[Ahorro -> $" + ahorrado2 + "]");
 	}
 
 }
