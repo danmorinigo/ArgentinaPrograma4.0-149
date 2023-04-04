@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.argentinaprograma.tema7.PreciosTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.05 s - in org.argentinaprograma.tema7.PreciosTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s - in org.argentinaprograma.tema7.PreciosTest

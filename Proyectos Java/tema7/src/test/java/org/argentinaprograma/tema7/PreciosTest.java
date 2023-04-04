@@ -102,7 +102,7 @@ public class PreciosTest {
 		assertEquals(precioFinalTest, carrito.precioSinDescuento());
 	}
 	
-	/*@Test
+	@Test
 	public void costoFinalBienCalculadoUsandoMapeo() {
 		
 		carrito = new Carrito();
@@ -114,9 +114,9 @@ public class PreciosTest {
 		
 		precioFinalTest = conDosDecimales(precioFinalTest);
 		assertEquals(precioFinalTest, carrito.precioSinDescuento());
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	public void costoFinalBienCalculadoUsandoMapeoDescuentoFijo() {
 		double valorDelDescuento = 85.3;
 		carrito = new Carrito("f", valorDelDescuento);
@@ -126,7 +126,7 @@ public class PreciosTest {
 				.map(precio -> precio).sum();
 		precioFinalTest = conDosDecimales(precioFinalTest);
 		assertEquals((precioFinalTest - valorDelDescuento), carrito.precioConDescuento(),5);
-	}*/
+	}
 	
 	@Test
 	public void costoFinalBienCalculadoUsandoIteratorDescuentoFijo() {
