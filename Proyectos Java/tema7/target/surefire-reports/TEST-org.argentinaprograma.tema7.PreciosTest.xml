@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.argentinaprograma.tema7.PreciosTest" time="0.057" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.argentinaprograma.tema7.PreciosTest" time="0.202" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="AR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\Dany\AppData\Local\Temp\surefire11535335353593509847\surefirebooter-20230404001011724_3.jar C:\Users\Dany\AppData\Local\Temp\surefire11535335353593509847 2023-04-04T00-10-11_378-jvmRun1 surefire-20230404001011724_1tmp surefire_0-20230404001011724_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Dany\AppData\Local\Temp\surefire7974276308401738563\surefirebooter-20230405070318458_3.jar C:\Users\Dany\AppData\Local\Temp\surefire7974276308401738563 2023-04-05T07-03-17_511-jvmRun1 surefire-20230405070318458_1tmp surefire_0-20230405070318458_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Dany\Documents\GitHub\ArgentinaPrograma4.0-149\Proyectos Java\tema7\target\test-classes;C:\Users\Dany\Documents\GitHub\ArgentinaPrograma4.0-149\Proyectos Java\tema7\target\classes;C:\Users\Dany\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.2.0\junit-jupiter-engine-5.2.0.jar;C:\Users\Dany\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\Dany\.m2\repository\org\junit\platform\junit-platform-engine\1.2.0\junit-platform-engine-1.2.0.jar;C:\Users\Dany\.m2\repository\org\junit\platform\junit-platform-commons\1.2.0\junit-platform-commons-1.2.0.jar;C:\Users\Dany\.m2\repository\org\opentest4j\opentest4j\1.1.0\opentest4j-1.1.0.jar;C:\Users\Dany\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.2.0\junit-jupiter-api-5.2.0.jar;C:\Users\Dany\.m2\repository\org\junit\platform\junit-platform-runner\1.2.0\junit-platform-runner-1.2.0.jar;C:\Users\Dany\.m2\repository\org\junit\platform\junit-platform-launcher\1.2.0\junit-platform-launcher-1.2.0.jar;C:\Users\Dany\.m2\repository\org\junit\platform\junit-platform-suite-api\1.2.0\junit-platform-suite-api-1.2.0.jar;C:\Users\Dany\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\Dany\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Dany\AppData\Local\Temp\surefire11535335353593509847\surefirebooter-20230404001011724_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Dany\AppData\Local\Temp\surefire7974276308401738563\surefirebooter-20230405070318458_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.6+9-LTS-190"/>
@@ -56,88 +56,88 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="costoFinalBienCalculadoUsandoMapeoDescuentoFijo" classname="org.argentinaprograma.tema7.PreciosTest" time="0.023">
+  <testcase name="costoFinalBienCalculadoUsandoMapeoDescuentoFijo" classname="org.argentinaprograma.tema7.PreciosTest" time="0.141">
     <system-out><![CDATA[Antes armar carrito
 Despues armar carrito
 Cantidad	Precio Unitario		Producto
 --------	---------------		--------
-   10		10.5			Jabon
-   4		150.3			Aceite
-   2		630.6			Mortadela
-   4		133.9			Fideos
-   8		133.9			Fideos
-   8		150.3			Aceite
-SE USO AFTER. precioFinalTest: 4776.6
+   6		250.6			Oreo
+   4		630.6			Mortadela
+   8		630.6			Mortadela
+   9		133.9			Fideos
+   8		630.6			Mortadela
+   4		10.5			Jabon
+SE USO AFTER. precioFinalTest: 15362.7
 ]]></system-out>
   </testcase>
-  <testcase name="costoFinalBienCalculadoUsandoIterator" classname="org.argentinaprograma.tema7.PreciosTest" time="0.002">
+  <testcase name="costoFinalBienCalculadoUsandoIterator" classname="org.argentinaprograma.tema7.PreciosTest" time="0.008">
     <system-out><![CDATA[Antes armar carrito
 Despues armar carrito
 Cantidad	Precio Unitario		Producto
 --------	---------------		--------
-   1		250.6			Oreo
+   9		10.5			Jabon
    2		150.3			Aceite
-   3		10.5			Jabon
    7		150.3			Aceite
-   9		150.3			Aceite
-   10		150.3			Aceite
-SE USO AFTER. precioFinalTest: 4490.5
+   2		630.6			Mortadela
+   8		250.6			Oreo
+   7		150.3			Aceite
+SE USO AFTER. precioFinalTest: 5765.3
 ]]></system-out>
   </testcase>
-  <testcase name="costoFinalBienCalculadoUsandoForDescuentoPorcentaje" classname="org.argentinaprograma.tema7.PreciosTest" time="0.003">
+  <testcase name="costoFinalBienCalculadoUsandoForDescuentoPorcentaje" classname="org.argentinaprograma.tema7.PreciosTest" time="0.008">
     <system-out><![CDATA[Antes armar carrito
 Despues armar carrito
 Cantidad	Precio Unitario		Producto
 --------	---------------		--------
-   4		150.3			Aceite
-   5		630.6			Mortadela
-   8		233.6			Leche
-   1		150.3			Aceite
-   3		250.6			Oreo
-   2		250.6			Oreo
-SE USO AFTER. precioFinalTest: 7026.3
-]]></system-out>
-  </testcase>
-  <testcase name="siAplicaDescuentoConTopeYElDescuentoEsSuperiorAlMaximoPermitidoSeAplicaTopeDeDescuento" classname="org.argentinaprograma.tema7.PreciosTest" time="0.002">
-    <system-out><![CDATA[Antes armar carrito
-Despues armar carrito
-Cantidad	Precio Unitario		Producto
---------	---------------		--------
-   5		10.5			Jabon
-   4		250.6			Oreo
-   7		133.9			Fideos
-   2		250.6			Oreo
-   9		133.9			Fideos
-   2		233.6			Leche
-SE USO AFTER. precioFinalTest: 4165.7
-]]></system-out>
-  </testcase>
-  <testcase name="costoFinalBienCalculadoUsandoIteratorDescuentoPorcentaje" classname="org.argentinaprograma.tema7.PreciosTest" time="0.013">
-    <system-out><![CDATA[Antes armar carrito
-Despues armar carrito
-Cantidad	Precio Unitario		Producto
---------	---------------		--------
-   5		133.9			Fideos
-   6		133.9			Fideos
-   6		133.9			Fideos
-   1		250.6			Oreo
-   4		133.9			Fideos
+   4		10.5			Jabon
+   3		630.6			Mortadela
+   3		133.9			Fideos
    6		150.3			Aceite
-SE USO AFTER. precioFinalTest: 3964.3
+   8		133.9			Fideos
+   2		10.5			Jabon
+SE USO AFTER. precioFinalTest: 4329.5
 ]]></system-out>
   </testcase>
-  <testcase name="costoFinalBienCalculadoUsandoFor" classname="org.argentinaprograma.tema7.PreciosTest" time="0.003">
+  <testcase name="siAplicaDescuentoConTopeYElDescuentoEsSuperiorAlMaximoPermitidoSeAplicaTopeDeDescuento" classname="org.argentinaprograma.tema7.PreciosTest" time="0.004">
     <system-out><![CDATA[Antes armar carrito
 Despues armar carrito
 Cantidad	Precio Unitario		Producto
 --------	---------------		--------
-   8		10.5			Jabon
-   5		630.6			Mortadela
-   9		133.9			Fideos
-   5		133.9			Fideos
+   1		150.3			Aceite
+   10		133.9			Fideos
+   5		10.5			Jabon
+   6		630.6			Mortadela
+   2		250.6			Oreo
+   8		150.3			Aceite
+SE USO AFTER. precioFinalTest: 7029.0
+]]></system-out>
+  </testcase>
+  <testcase name="costoFinalBienCalculadoUsandoIteratorDescuentoPorcentaje" classname="org.argentinaprograma.tema7.PreciosTest" time="0.004">
+    <system-out><![CDATA[Antes armar carrito
+Despues armar carrito
+Cantidad	Precio Unitario		Producto
+--------	---------------		--------
+   4		250.6			Oreo
+   3		233.6			Leche
+   9		233.6			Leche
+   10		133.9			Fideos
+   1		630.6			Mortadela
+   4		150.3			Aceite
+SE USO AFTER. precioFinalTest: 6376.4
+]]></system-out>
+  </testcase>
+  <testcase name="costoFinalBienCalculadoUsandoFor" classname="org.argentinaprograma.tema7.PreciosTest" time="0.004">
+    <system-out><![CDATA[Antes armar carrito
+Despues armar carrito
+Cantidad	Precio Unitario		Producto
+--------	---------------		--------
+   6		133.9			Fideos
+   6		10.5			Jabon
    3		10.5			Jabon
-   7		630.6			Mortadela
-SE USO AFTER. precioFinalTest: 9557.3
+   1		630.6			Mortadela
+   3		133.9			Fideos
+   2		250.6			Oreo
+SE USO AFTER. precioFinalTest: 2431.4
 ]]></system-out>
   </testcase>
   <testcase name="costoFinalBienCalculadoUsandoIteratorDescuentoFijo" classname="org.argentinaprograma.tema7.PreciosTest" time="0.002">
@@ -145,41 +145,41 @@ SE USO AFTER. precioFinalTest: 9557.3
 Despues armar carrito
 Cantidad	Precio Unitario		Producto
 --------	---------------		--------
-   3		150.3			Aceite
-   8		133.9			Fideos
-   2		250.6			Oreo
-   4		630.6			Mortadela
-   10		150.3			Aceite
-   2		10.5			Jabon
-SE USO AFTER. precioFinalTest: 6069.7
+   9		250.6			Oreo
+   8		150.3			Aceite
+   5		133.9			Fideos
+   1		250.6			Oreo
+   2		133.9			Fideos
+   7		133.9			Fideos
+SE USO AFTER. precioFinalTest: 5583.0
 ]]></system-out>
   </testcase>
-  <testcase name="costoFinalBienCalculadoUsandoMapeo" classname="org.argentinaprograma.tema7.PreciosTest" time="0.001">
+  <testcase name="costoFinalBienCalculadoUsandoMapeo" classname="org.argentinaprograma.tema7.PreciosTest" time="0.005">
     <system-out><![CDATA[Antes armar carrito
 Despues armar carrito
 Cantidad	Precio Unitario		Producto
 --------	---------------		--------
+   4		630.6			Mortadela
    1		630.6			Mortadela
-   5		250.6			Oreo
-   3		250.6			Oreo
+   5		630.6			Mortadela
+   10		133.9			Fideos
    6		250.6			Oreo
-   4		630.6			Mortadela
-   4		133.9			Fideos
-SE USO AFTER. precioFinalTest: 7197.0
+   4		233.6			Leche
+SE USO AFTER. precioFinalTest: 10083.0
 ]]></system-out>
   </testcase>
-  <testcase name="siAplicaDescuentoConTopeYElDescuentoEsMenorAlMaximoPermitidoSeAplicaElDescuentoPedido" classname="org.argentinaprograma.tema7.PreciosTest" time="0.001">
+  <testcase name="siAplicaDescuentoConTopeYElDescuentoEsMenorAlMaximoPermitidoSeAplicaElDescuentoPedido" classname="org.argentinaprograma.tema7.PreciosTest" time="0.004">
     <system-out><![CDATA[Antes armar carrito
 Despues armar carrito
 Cantidad	Precio Unitario		Producto
 --------	---------------		--------
-   10		150.3			Aceite
-   2		150.3			Aceite
-   8		133.9			Fideos
-   2		250.6			Oreo
-   7		630.6			Mortadela
+   10		133.9			Fideos
    4		133.9			Fideos
-SE USO AFTER. precioFinalTest: 8325.8
+   6		150.3			Aceite
+   4		250.6			Oreo
+   4		133.9			Fideos
+   5		630.6			Mortadela
+SE USO AFTER. precioFinalTest: 7467.4
 ]]></system-out>
   </testcase>
 </testsuite>

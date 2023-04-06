@@ -1,0 +1,6 @@
+Jabon,10.5,Jabon de tocador
+Aceite,150.3,Aceite de girasol
+Oreo,250.6,Galletitas
+Fideos,133.9,Fideos comunes
+Mortadela,630.6,Embutido
+Leche,233.6,Lacteos
