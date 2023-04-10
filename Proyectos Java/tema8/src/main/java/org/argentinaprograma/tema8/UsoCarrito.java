@@ -91,7 +91,9 @@ public class UsoCarrito {
 		} catch (MontoMenorADescuentoException e) {
 			System.out.printf("%38s\n", "[Descuento superior al costo total]");
 			System.out.printf("%38s\n", "[A pagar: $0.00]");
-		} catch(CostoCarritoEsCeroException e) {}
+		} catch(CostoCarritoEsCeroException e) {
+			System.out.printf("%38s\n", "***[Carrito Vacio]***");
+		}
 	}
 
 }
