@@ -1,17 +1,19 @@
 package org.argentinaprograma.tema9.models;
 
-import java.util.List;
-import java.util.ArrayList;
 
-import lombok.Builder;
+import java.time.LocalDate;
+
 import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-import lombok.Singular;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Persona {
-	@Setter @Getter @NonNull
+	
 	private String nombre;
+	private String apellido;
+	private LocalDate fechaNacimiento;
+
 }
