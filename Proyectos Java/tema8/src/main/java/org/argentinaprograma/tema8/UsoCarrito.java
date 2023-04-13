@@ -20,6 +20,7 @@ public class UsoCarrito {
 		//Armo objetos 6 Productos
 		String archivoProductos = "src/main/resources/Productos.txt";
 		Path pathProductos = Paths.get(archivoProductos);
+		
 		Producto[] producto = new Producto[6];
 		ItemCarrito[] itemCarrito = new ItemCarrito[6];
 	
