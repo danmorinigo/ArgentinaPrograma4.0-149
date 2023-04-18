@@ -34,23 +34,23 @@ public class Chat {
 				leerYmostrarChat();
 				break;
 			case "e":
-				pedirYRegistrarChat();
+				System.out.print("Escribir ---> ");
+				String texto = entrada.nextLine();
+				String linea = nombre + "£" + texto + "\n";
+				registrarChat(linea);
+				break;
 			}
 		}
 	}
 
-	private static void pedirYRegistrarChat() {
-		@Cleanup
-		Scanner entrada = new Scanner(System.in);
-		System.out.print("Escribir ---> ");
-		String texto = entrada.nextLine();
-		String linea = nombre + "£" + texto + "\n";
+	private static void registrarChat(String linea) {
+
 		try {
-			
 			Files.write(rutaArchivo, linea.getBytes(), StandardOpenOption.APPEND);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	private static void leerYmostrarChat() {
@@ -62,11 +62,10 @@ public class Chat {
 				String[] separados;
 				for(String linea : Files.readAllLines(rutaArchivo)) {
 					separados = linea.split("£"); //caracter 156
-					System.out.println(separados[0] + " *-* " + separados[1] + "*-*");
+					System.out.println(separados[0] + ":::> " + separados[1] + "<<FIN>>");
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
