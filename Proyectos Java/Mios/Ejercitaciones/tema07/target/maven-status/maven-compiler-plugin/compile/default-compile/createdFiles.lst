@@ -1,0 +1,9 @@
+org\argentinaprograma\tema7\models\DescuentoPorPorcentaje.class
+org\argentinaprograma\tema7\models\DescuentoPorcentajeConTope.class
+org\argentinaprograma\tema7\models\Producto.class
+org\argentinaprograma\tema7\models\Descuento.class
+org\argentinaprograma\tema7\UsoCarrito.class
+org\argentinaprograma\tema7\models\DescuentoFijo.class
+org\argentinaprograma\tema7\models\Carrito.class
+org\argentinaprograma\tema7\App.class
+org\argentinaprograma\tema7\models\ItemCarrito.class
