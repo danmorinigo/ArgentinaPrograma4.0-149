@@ -9,9 +9,9 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
-//import org.argentinaprograma.entrega2.models.Equipo;
-//import org.argentinaprograma.entrega2.models.Partido;
 import org.argentinaprograma.entrega2.exceptions.IdPartidoNoEncontradoException;
+import org.argentinaprograma.entrega2.exceptions.ErrorCantidadCamposException;
+import org.argentinaprograma.entrega2.exceptions.ErrorNumericoException;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 
@@ -19,6 +19,7 @@ public class ImportadorDatos {
 
 	public static Ronda crearRonda(String rutaDelArchivoDeResultados) {
 
+		//String rutaArchivoConCamposCorrectos = null;
 		String rutaArchivoConCamposCorrectos = verificarCamposArchivoResultados(rutaDelArchivoDeResultados);
 		
 		Ronda ronda = new Ronda();
@@ -45,7 +46,7 @@ public class ImportadorDatos {
         return ronda;
 	}
 
-	private static String verificarCamposArchivoResultados(String rutaArchivoDeResultados) {
+	public static String verificarCamposArchivoResultados(String rutaArchivoDeResultados) {
 		
 		Path pathArchivoOriginal = Paths.get(rutaArchivoDeResultados);
 
@@ -58,14 +59,13 @@ public class ImportadorDatos {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		
 		System.out.println("Leyendo " + pathArchivoOriginal + "...");
+		
 		try {
-			String[] separados;
-			String golesEqA, golesEqB;
-			String regExNumeros = "[0-9]+";
 			int nroLinea = 1;
+			String[] separados;
+			String regExNumeros = "[0-9]+";
 			for(String linea : Files.readAllLines(pathArchivoOriginal)) {
 				//Agrego "enter" al final de cada linea leida
 				if(!(linea.endsWith("\n"))) {
@@ -77,18 +77,25 @@ public class ImportadorDatos {
 					//Agrego encabezado sin verificar
 					Files.write(pathArchivoCamposCorrectos, linea.getBytes(), StandardOpenOption.APPEND);
 				}else{
-					if(separados.length == 6) {
+					boolean cantidadCorrectaCampos = false;
+					boolean camposGolesCorrectos = false;
+					try {
+						cantidadCorrectaCampos = chequearCantidadCampos(separados);
+					}catch(ErrorCantidadCamposException e) {
+						System.out.println("Error cantidad de campos en linea: " + nroLinea);
+					}
+					
+					if(cantidadCorrectaCampos) {
 						//Chequeo goles
-						golesEqA = separados[3];
-						golesEqB = separados[4];
-						if((golesEqA.matches(regExNumeros)) && (golesEqB.matches(regExNumeros))) {
-							//agrego a archivo chequeado
-							Files.write(pathArchivoCamposCorrectos, linea.getBytes(), StandardOpenOption.APPEND);
-						}else {
+						try {
+							camposGolesCorrectos = chequearCamposGoles(separados, regExNumeros);
+						}catch(ErrorNumericoException e) {
 							System.out.println("Error \"goles\" en linea: " + nroLinea);
 						}
-					}else {
-						System.out.println("Error cantidad de campos en linea: " + nroLinea);
+						if(camposGolesCorrectos) {
+							//agrego a archivo chequeado
+							Files.write(pathArchivoCamposCorrectos, linea.getBytes(), StandardOpenOption.APPEND);
+						}
 					}
 				}
 				nroLinea++;
@@ -96,9 +103,27 @@ public class ImportadorDatos {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+	
 		System.out.println("Hecho!");
 		return rutaArchivoResultadosCamposCorrectos;
+	}
+
+	public static boolean chequearCamposGoles(String[] separados, String regEx)
+			throws ErrorNumericoException {
+		String golesEqA = separados[3];
+		String golesEqB = separados[4];
+		if(!(golesEqA.matches(regEx)) || !(golesEqB.matches(regEx))) {
+			throw new ErrorNumericoException();
+		}
+		return true;
+	}
+
+	public static boolean chequearCantidadCampos(String[] separados)
+			throws ErrorCantidadCamposException {
+		if(separados.length != 6) {
+			throw new ErrorCantidadCamposException();
+		}
+		return true;
 	}
 
 	public static List<Pronostico> crearPronosticos(String rutaDelArchivoDePronosticos, Ronda ronda){
@@ -131,7 +156,6 @@ public class ImportadorDatos {
         for(Pronostico pronostico : lineasArchivoPronostico) {
         	try {
 				pronostico.inicializarCon(ronda);
-				//pronostico.mostrarPronostico();
 			} catch (IdPartidoNoEncontradoException e) {
 				pronosticosConErrores.add(pronostico);
 				System.out.println("No se encontro partido con ID<" + pronostico.idDelPartido() + "> | No se cargara pronostico.");
