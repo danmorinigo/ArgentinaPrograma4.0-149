@@ -13,7 +13,8 @@ public class PruebaConexionDB {
 		
 		try {
 			//Registro Driver
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class<?> C = Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println(C.descriptorString());
 
 			//Creo objeto de conexion		
 			Connection conexion = DriverManager.getConnection(
@@ -54,7 +55,8 @@ public class PruebaConexionDB {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
