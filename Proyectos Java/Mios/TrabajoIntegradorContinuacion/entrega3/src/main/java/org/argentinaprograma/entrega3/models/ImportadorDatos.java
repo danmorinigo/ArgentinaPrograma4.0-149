@@ -26,7 +26,6 @@ public class ImportadorDatos {
 
 	public static Ronda crearRonda(String rutaDelArchivoDeResultados) {
 
-		//String rutaArchivoConCamposCorrectos = null;
 		String rutaArchivoConCamposCorrectos = verificarCamposArchivoResultados(rutaDelArchivoDeResultados);
 		
 		Ronda ronda = new Ronda();
@@ -48,8 +47,9 @@ public class ImportadorDatos {
         }
         for(Partido partido : lineasArchivoResultados) {
         	partido.inicializarEquipos();
-        	ronda.agregarPartidos(partido);
+        	ronda.agregarPartido(partido);
         }
+        
         return ronda;
 	}
 
@@ -133,51 +133,9 @@ public class ImportadorDatos {
 		return true;
 	}
 
-	public static List<Pronostico> crearPronosticos2(String rutaDelArchivoDePronosticos, Ronda ronda){
-		
-		List<Pronostico> lineasArchivoPronostico = new ArrayList<Pronostico>();
-		
-        try {
-            // En esta primera línea definimos el archivos que va a ingresar
-        	lineasArchivoPronostico = new CsvToBeanBuilder(new FileReader(rutaDelArchivoDePronosticos))
-                    // con esta configuración podemos skipear la primera línea de nuestro archivo CSV
-                    .withSkipLines(1)
-                    // con esta configuración podemos elegir cual es el caracter que vamos a usar para delimitar
-                    .withSeparator(',')
-                    // Es necesario definir el tipo de dato que va a generar el objeto que estamos queriendo parsear a partir del CSV
-                    .withType(Pronostico.class)
-                    .build()
-                    .parse();
-
-        } catch (IOException e) {
-        	e.printStackTrace();
-        }
-		
-		return pronosticosSinErroresEnId_partido(lineasArchivoPronostico, ronda);
-	}
-
-	private static List<Pronostico> pronosticosSinErroresEnId_partido(List<Pronostico> lineasArchivoPronostico, Ronda ronda) {
-		
-		List<Pronostico> pronosticosConErrores = new ArrayList<Pronostico>();
-        
-        for(Pronostico pronostico : lineasArchivoPronostico) {
-        	try {
-				pronostico.inicializarCon(ronda);
-			} catch (IdPartidoNoEncontradoException e) {
-				pronosticosConErrores.add(pronostico);
-				System.out.println("No se encontro partido con ID<" + pronostico.idDelPartido() + "> | No se cargara pronostico.");
-			}
-        }	
-        if(!pronosticosConErrores.isEmpty()) {
-        	lineasArchivoPronostico.removeAll(pronosticosConErrores);
-        }
-		return lineasArchivoPronostico;
-	}
-
 	public static List<Pronostico> crearPronosticos(String dBPronosticos, Ronda ronda) {
 			
 			List<Pronostico> pronosticos = new ArrayList<Pronostico>();
-			//List<Pronostico> pronosticosConErrores = new ArrayList<Pronostico>();
 			Path pathArchivoConfiguracion = Paths.get("src/main/resources/configuracion.ini");
 			Connection conexion = null;
 			try {
@@ -231,8 +189,6 @@ public class ImportadorDatos {
 				
 				ResultSet resultado = sentencia.executeQuery("SELECT * FROM pronostico");
 			
-				//int columnas = resultado.getMetaData().getColumnCount();
-				
 				String participante;
 				int idPartido;
 				String ganaEquipoA;
@@ -259,17 +215,7 @@ public class ImportadorDatos {
 					} catch (IdPartidoNoEncontradoException e) {
 						System.out.println("Para " + participante +" no se encuentra partido "+
 								"con id: " + idPartido);
-						//pronosticosConErrores.add(pronostico);
 					}
-					//System.out.println(resultado.getMetaData());
-					/*
-					System.out.println("Fila (row): " + resultado.getRow());
-					String nombreColumna = null;
-					for(int i = 1; i <= columnas; i++) {
-						nombreColumna = resultado.getMetaData().getColumnName(i);
-						System.out.println("\t" + nombreColumna + ": " + resultado.getString(i));
-					}
-					*/
 				}
 			
 			} catch (IOException e) {
@@ -285,17 +231,10 @@ public class ImportadorDatos {
 					conexion.close();
 					System.out.println("Listo!!");
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 			
-			/*if(!pronosticosConErrores.isEmpty()) {
-	        	System.out.println("REMOVIENDO " + pronosticosConErrores.size());
-	        	System.out.println("DEVUELVE (ANTES)" + pronosticos.size());
-	        	pronosticos.removeAll(pronosticosConErrores);
-	        	System.out.println("DEVUELVE " + pronosticos.size());
-	        }*/
 			for (Pronostico p : pronosticos) {
 				System.out.println("\tPronostico id: " + p.getId());
 			}

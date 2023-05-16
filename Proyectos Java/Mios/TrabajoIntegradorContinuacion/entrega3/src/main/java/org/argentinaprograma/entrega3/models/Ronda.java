@@ -15,7 +15,7 @@ public class Ronda {
 		this.partidos = new ArrayList<Partido>();
 	}
 	
-	public void agregarPartidos(Partido partido) {
+	public void agregarPartido(Partido partido) {
 		this.partidos.add(partido);
 	}
 	
@@ -88,5 +88,5 @@ public class Ronda {
 			return puntosTodosLosParticipantes.get(participante);
 		}
 		return -1;
-	};
+	}
 }

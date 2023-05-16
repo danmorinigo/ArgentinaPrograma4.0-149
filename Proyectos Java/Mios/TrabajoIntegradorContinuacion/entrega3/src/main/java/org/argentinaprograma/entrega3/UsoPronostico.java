@@ -13,9 +13,6 @@ public class UsoPronostico {
 		chequearCantidadArgumentos(args);
 
 		Ronda ronda = ImportadorDatos.crearRonda(args[0]);
-		
-		//List<Pronostico> pronosticos = ImportadorDatos.crearPronosticos(args[1], ronda);
-		
 		String dBPronosticos = args[1];
 		List<Pronostico> pronosticos = ImportadorDatos.crearPronosticos(dBPronosticos, ronda);
 		

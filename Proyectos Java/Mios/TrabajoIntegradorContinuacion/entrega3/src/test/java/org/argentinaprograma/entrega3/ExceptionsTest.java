@@ -36,9 +36,9 @@ public class ExceptionsTest extends Exception{
 		partido.setEquipo2(equipoB);
 		partido.setGolesEquipo1(0);
 		partido.setGolesEquipo2(0);
-		ronda.agregarPartidos(partido);
+		ronda.agregarPartido(partido);
 		
-		System.out.println(ronda.partido(2).getGolesEquipo1());
+		System.out.println(ronda.partido(2));
 	}
 
 	@Test(expected = ErrorCantidadCamposException.class)

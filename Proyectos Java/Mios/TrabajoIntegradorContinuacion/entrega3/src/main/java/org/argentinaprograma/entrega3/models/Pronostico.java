@@ -18,19 +18,15 @@ import org.argentinaprograma.entrega3.exceptions.IdPartidoNoEncontradoException;
 import com.opencsv.bean.CsvBindByPosition;
 
 public class Pronostico {
+
 	private static int creadorId = 1;
-	private int id;
-	//@CsvBindByPosition(position = 0)
-	private String participante;
-	//@CsvBindByPosition(position = 1)
-	private int id_partido;
-	//@CsvBindByPosition(position = 2)
-	private String ganaEquipoA;
-	//@CsvBindByPosition(position = 3)
-	private String empate;
-	//@CsvBindByPosition(position = 4)
-	private String ganaEquipoB;
 	
+	private int id;
+	private String participante;
+	private int id_partido;
+	private String ganaEquipoA;
+	private String empate;
+	private String ganaEquipoB;
 	private Equipo equipoA;
 	private Ronda ronda;
 	
@@ -51,12 +47,14 @@ public class Pronostico {
 		this.ganaEquipoB = ganaEquipoB;
 		this.ronda = ronda;
 		this.equipoA = this.ronda.partido(id_partido).getEquipo1();
+		
 		creadorId++;
 	}
 	
 	public int getId() {
 		return this.id;
 	}
+	
 	public int puntos() {
 		try {
 			if(ronda.partido(id_partido).resultado(equipoA).equals(resultadoEquipoA())) {
@@ -95,11 +93,11 @@ public class Pronostico {
 		}
 	}
 
-	public void inicializarCon(Ronda ronda) 
+	/*public void inicializarCon(Ronda ronda) 
 			throws IdPartidoNoEncontradoException {
 		this.ronda = ronda;
 		this.equipoA = this.ronda.partido(id_partido).getEquipo1();
-	}
+	}*/
 
 	public int getId_partido() {
 		return id_partido;

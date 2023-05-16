@@ -67,7 +67,7 @@ public class PuntosTest {
 		//Escenario
 		partido.setGolesEquipo1(2);
 		partido.setGolesEquipo2(0);
-		ronda.agregarPartidos(partido);
+		ronda.agregarPartido(partido);
 		pronostico.setRonda(ronda);
 		pronostico.setEmpate("x");
 		otroPronostico.setRonda(ronda);
@@ -81,7 +81,7 @@ public class PuntosTest {
 		//Escenario
 		partido.setGolesEquipo1(2);
 		partido.setGolesEquipo2(0);
-		ronda.agregarPartidos(partido);
+		ronda.agregarPartido(partido);
 		pronostico.setRonda(ronda);
 		pronostico.setGanaEquipoA("x");
 
@@ -93,14 +93,14 @@ public class PuntosTest {
 		//Escenario
 		partido.setGolesEquipo1(2);
 		partido.setGolesEquipo2(0);
-		ronda.agregarPartidos(partido);
+		ronda.agregarPartido(partido);
 		pronostico.setRonda(ronda);
 		pronostico.setGanaEquipoA("x");
 		pronosticos.add(pronostico);
 		
 		otroPartido.setGolesEquipo1(0);
 		otroPartido.setGolesEquipo2(2);
-		ronda.agregarPartidos(otroPartido);
+		ronda.agregarPartido(otroPartido);
 		otroPronostico.setRonda(ronda);
 		otroPronostico.setGanaEquipoB("x");
 		pronosticos.add(otroPronostico);
