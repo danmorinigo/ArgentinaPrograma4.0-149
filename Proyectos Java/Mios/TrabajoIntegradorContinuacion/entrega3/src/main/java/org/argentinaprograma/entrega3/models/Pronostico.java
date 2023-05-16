@@ -1,28 +1,62 @@
 package org.argentinaprograma.entrega3.models;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.argentinaprograma.entrega3.exceptions.IdPartidoNoEncontradoException;
 
 import com.opencsv.bean.CsvBindByPosition;
 
 public class Pronostico {
-	@CsvBindByPosition(position = 0)
+	private static int creadorId = 1;
+	private int id;
+	//@CsvBindByPosition(position = 0)
 	private String participante;
-	@CsvBindByPosition(position = 1)
+	//@CsvBindByPosition(position = 1)
 	private int id_partido;
-	@CsvBindByPosition(position = 2)
+	//@CsvBindByPosition(position = 2)
 	private String ganaEquipoA;
-	@CsvBindByPosition(position = 3)
+	//@CsvBindByPosition(position = 3)
 	private String empate;
-	@CsvBindByPosition(position = 4)
+	//@CsvBindByPosition(position = 4)
 	private String ganaEquipoB;
 	
 	private Equipo equipoA;
 	private Ronda ronda;
 	
 	public Pronostico() {
-		
+		this.id = creadorId;
+		creadorId++;
 	}
 	
+	public Pronostico(String participante, int id_partido,
+			String ganaEquipoA, String empate, String ganaEquipoB,
+			Ronda ronda)
+					throws IdPartidoNoEncontradoException {
+		this.id = creadorId;
+		this.participante = participante;
+		this.id_partido = id_partido;
+		this.ganaEquipoA = ganaEquipoA;
+		this.empate = empate;
+		this.ganaEquipoB = ganaEquipoB;
+		this.ronda = ronda;
+		this.equipoA = this.ronda.partido(id_partido).getEquipo1();
+		creadorId++;
+	}
+	
+	public int getId() {
+		return this.id;
+	}
 	public int puntos() {
 		try {
 			if(ronda.partido(id_partido).resultado(equipoA).equals(resultadoEquipoA())) {
@@ -123,4 +157,5 @@ public class Pronostico {
 		this.participante = participante;
 	}
 
+	
 }

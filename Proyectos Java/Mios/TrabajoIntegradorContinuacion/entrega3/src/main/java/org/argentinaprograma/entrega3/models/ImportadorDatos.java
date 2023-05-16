@@ -6,8 +6,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.argentinaprograma.entrega3.exceptions.ErrorCantidadCamposException;
 import org.argentinaprograma.entrega3.exceptions.ErrorNumericoException;
@@ -126,7 +133,7 @@ public class ImportadorDatos {
 		return true;
 	}
 
-	public static List<Pronostico> crearPronosticos(String rutaDelArchivoDePronosticos, Ronda ronda){
+	public static List<Pronostico> crearPronosticos2(String rutaDelArchivoDePronosticos, Ronda ronda){
 		
 		List<Pronostico> lineasArchivoPronostico = new ArrayList<Pronostico>();
 		
@@ -167,4 +174,133 @@ public class ImportadorDatos {
 		return lineasArchivoPronostico;
 	}
 
-}
+	public static List<Pronostico> crearPronosticos(String dBPronosticos, Ronda ronda) {
+			
+			List<Pronostico> pronosticos = new ArrayList<Pronostico>();
+			//List<Pronostico> pronosticosConErrores = new ArrayList<Pronostico>();
+			Path pathArchivoConfiguracion = Paths.get("src/main/resources/configuracion.ini");
+			Connection conexion = null;
+			try {
+				
+				List<String> lineas = Files.readAllLines(pathArchivoConfiguracion);
+	
+				String regEx = "((URL:)\\s(([a-z]|[0-9]|\\.|/|:)+$)|(PASSWORD:)\\s(([A-Z]|[a-z]|[0-9])+$)|(USER:)\\s(([a-z]|[0-9])+$))";
+				Pattern pattern = Pattern.compile(regEx, Pattern.MULTILINE);
+				Matcher matcher;
+				String USER = null, URL = null, PASSWORD = null;
+				
+				for(String linea : lineas) {
+					matcher = pattern.matcher(linea);
+					while(matcher.find()) {
+						for(int i = 2; i <= matcher.groupCount(); i++) {
+							if(matcher.group(i) != null) {
+								if(matcher.group(i).equalsIgnoreCase("USER:")){
+									USER = matcher.group(i + 1);
+									i = matcher.groupCount() + 1;
+								} else if (matcher.group(i).equalsIgnoreCase("URL:")){
+									URL = matcher.group(i + 1);
+									i = matcher.groupCount() + 1;
+								} else if (matcher.group(i).equalsIgnoreCase("PASSWORD:")) {
+									PASSWORD = matcher.group(i + 1);
+									i = matcher.groupCount() + 1;
+								}
+							}
+						}
+					}
+				}
+	
+				System.out.println("USER: " + USER);
+				System.out.println("URL: " + URL);
+				System.out.println("Contraseña: " + PASSWORD);
+				System.out.println("END");
+			
+			
+				//Registro Driver
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				
+				//Creo objeto de conexion		
+				conexion = DriverManager.getConnection(
+						URL,
+						USER,
+						PASSWORD);
+				
+				//Creacion de sentencia
+				Statement sentencia = conexion.createStatement();
+				
+				//Ejecutamos y obtenemos resultados de la sentencia
+				
+				ResultSet resultado = sentencia.executeQuery("SELECT * FROM pronostico");
+			
+				//int columnas = resultado.getMetaData().getColumnCount();
+				
+				String participante;
+				int idPartido;
+				String ganaEquipoA;
+				String ganaEquipoB;
+				String empate;
+				
+				Pronostico pronostico = null;
+				while(resultado.next()) {
+					participante = resultado.getString("participante");
+					idPartido = resultado.getInt("id_partido");
+					ganaEquipoA = resultado.getString("ganaEquipoA");
+					ganaEquipoB = resultado.getString("ganaEquipoB");
+					empate = resultado.getString("empate");
+					
+					try {
+						pronostico = new Pronostico(
+								participante,
+								idPartido,
+								ganaEquipoA,
+								empate,
+								ganaEquipoB,
+								ronda);
+						pronosticos.add(pronostico);
+					} catch (IdPartidoNoEncontradoException e) {
+						System.out.println("Para " + participante +" no se encuentra partido "+
+								"con id: " + idPartido);
+						//pronosticosConErrores.add(pronostico);
+					}
+					//System.out.println(resultado.getMetaData());
+					/*
+					System.out.println("Fila (row): " + resultado.getRow());
+					String nombreColumna = null;
+					for(int i = 1; i <= columnas; i++) {
+						nombreColumna = resultado.getMetaData().getColumnName(i);
+						System.out.println("\t" + nombreColumna + ": " + resultado.getString(i));
+					}
+					*/
+				}
+			
+			} catch (IOException e) {
+				System.out.println("Archivo de configuracion no encontrado.");
+			} catch (ClassNotFoundException e) {
+				System.out.println("Clase no encontrada");
+			} catch (SQLException e) {
+				System.out.println("SQL Exception!");
+			} finally {
+				try {
+					
+					System.out.println("Cerrando conexion...");
+					conexion.close();
+					System.out.println("Listo!!");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			/*if(!pronosticosConErrores.isEmpty()) {
+	        	System.out.println("REMOVIENDO " + pronosticosConErrores.size());
+	        	System.out.println("DEVUELVE (ANTES)" + pronosticos.size());
+	        	pronosticos.removeAll(pronosticosConErrores);
+	        	System.out.println("DEVUELVE " + pronosticos.size());
+	        }*/
+			for (Pronostico p : pronosticos) {
+				System.out.println("\tPronostico id: " + p.getId());
+			}
+			System.out.println("DEVUELVE " + pronosticos.size() + " pronostico(s).");
+			return pronosticos;
+		}
+	
+	}

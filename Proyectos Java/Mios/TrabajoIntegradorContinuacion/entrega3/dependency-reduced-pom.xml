@@ -20,7 +20,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>org.argentinaprograma.entrega3.PruebaConexionDB</mainClass>
+                  <mainClass>org.argentinaprograma.entrega3.UsoPronostico</mainClass>
                 </transformer>
               </transformers>
             </configuration>
